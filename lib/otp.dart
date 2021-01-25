@@ -5,7 +5,6 @@ import 'dart:typed_data';
 import 'package:base32/base32.dart';
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
-import 'package:quick_log/quick_log.dart';
 
 /// RFC4226/RFC6238 One-Time Password / Google Authenticator Library
 class OTP {
@@ -172,8 +171,7 @@ class OTP {
 
   static void _showHOTPWarning(Hash mac) {
     if (mac is Sha256 || mac is Sha512) {
-      const logger = Logger('otp');
-      logger.warning(
+      print(
           'Using non-SHA1 hashing with HOTP is not part of the RFC for HOTP and may cause incompatibilities between different library implementatiions. This library attempts to match behavior with other libraries as best it can.');
     }
   }
